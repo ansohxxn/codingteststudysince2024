@@ -1,0 +1,14 @@
+.DS_Store
+
+.dSYM/
+*/*.dsYM
+*.plist
+
+# Ignore all
+*
+
+# Unignore all with extensions
+!*.*
+
+# Unignore all dirs
+!*/
