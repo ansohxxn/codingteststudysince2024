@@ -37,6 +37,8 @@ int main() {
 	cout << "Hello " << solution({"123","456","789"});	
 }
 
+// https://school.programmers.co.kr/learn/courses/30/lessons/42577
+
 // 해시 주제의 문제라 해시로 다시 풀어보기
 // 전화번호목록 1 풀이와 반대로 나를 잘게 쪼개어 내게 어떠한 접두사가 있는지를 검사
 
