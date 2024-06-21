@@ -33,7 +33,7 @@ vector<int> solution(vector<string> genres, vector<int> plays) {
 		auto genreName = genres[id];
 		auto playCount = plays[id];
 		genrePlayCountDict[genreName] += playCount;
-		genrePlayListDict[genreName].push_back(make_pair(id, playCount)); // 런타임 에러 나나?
+		genrePlayListDict[genreName].push_back(make_pair(id, playCount)); // 런타임 에러 나나? -> c++은 안남
 	}
 	
 	// 1. 플레이 횟수에 의한 장르 정렬
@@ -53,6 +53,4 @@ vector<int> solution(vector<string> genres, vector<int> plays) {
     return answer;
 }
 
-// C++ 알게 된 점 정리 (정렬 함수, make_pair, 런타임 에러 안났음;)
-
-// C# Linq 써서 풀어보는건 어떨지
+// https://school.programmers.co.kr/learn/courses/30/lessons/42579
