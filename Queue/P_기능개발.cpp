@@ -22,16 +22,17 @@ vector<int> solution(vector<int> progresses, vector<int> speeds) {
     auto releaseCount = 0;
     auto releaseDay = workingDaysToNeedQueue.front();
     while (!workingDaysToNeedQueue.empty()) {
-        auto workingDaysTonNeed = workingDaysToNeedQueue.front();
+        auto workingDaysToNeed = workingDaysToNeedQueue.front();
         workingDaysToNeedQueue.pop();
 
         // 가장 최근에 업뎃 된 (= 이전에 업뎃된 이라고 표현하면 좀 그런가) 
         // releaseDay 에 몇개가 출시될 수 있는지 알 수 있는 순간.
-        if (releaseDay < workingDaysTonNeed) {
+        // releaseDay >= workingDaysToNeed 일 때만 releaseDay 에 포함해서 출시가 가능한 작업인 것이다.
+        if (releaseDay < workingDaysToNeed) {
             answer.push_back(releaseCount);
 
             releaseCount = 0;
-            releaseDay = workingDaysTonNeed;
+            releaseDay = workingDaysToNeed;
         }
 
         ++releaseCount;
@@ -44,4 +45,15 @@ vector<int> solution(vector<int> progresses, vector<int> speeds) {
     return answer;
 }
 
-// https://school.programmers.co.kr/learn/courses/30/lessons/42586
+// https://school0.programmers.co.kr/learn/courses/30/lessons/42586
+
+// 예시) 입출력 예시 1번은 큐에 (7, 3, 9) 가 들어가게 됨
+// releaseDay = 7
+// 7 pop ----> 7 >= 7 이므로 7일에 출시가 가능. releaseCount = 1
+// 3 pop ----> 7 >= 3 이므로 7일에 출시가 가능. releaseCount = 2
+// 9 pop ----> 7 < 9 이므로 7일에 출시가 불가능. 
+    // 7일에 출시 가능한건 뒤에 더 이상 없음 기존의 releaseCount = 2를 푸시하고 초기화함. 이제 9일에 배포 가능한지를 기준으로 봐야 함. releaseDay = 9
+    // 9 >= 9 이므로 9일에 출시가 가능. releaseCount = 1
+// 큐 원소들 검사 완료
+// 가장 최근에 업뎃한 releaseCount 는 9일에 출시 가능한 개수가 되는 것이므로 answer 에 푸시해준다.
+
